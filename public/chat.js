@@ -57,10 +57,6 @@ $(function () {
     );
   });
 
-  // send_username.click(() => {
-  //   socket.emit("change_username", { username: username.val() });
-  // });
-
   send_username.click(() => {
     if (username.val() === "") {
       socket.emit("change_username", { username: "Ананім" });
