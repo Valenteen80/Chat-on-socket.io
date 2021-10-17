@@ -1,12 +1,12 @@
 $(function () {
-  var socket = io.connect("http://localhost:3000");
+  const socket = io.connect("http://localhost:3000");
 
-  var message = $("#message");
-  var username = $("#username");
-  var send_message = $("#send_message");
-  var send_username = $("#send_username");
-  var chatroom = $("#chatroom");
-  var feedback = $("#feedback");
+  const message = $("#message");
+  const username = $("#username");
+  const send_message = $("#send_message");
+  const send_username = $("#send_username");
+  const chatroom = $("#chatroom");
+  const feedback = $("#feedback");
 
   send_message.click(() => {
     socket.emit("new_message", {
@@ -14,13 +14,13 @@ $(function () {
       className: alertClass,
     });
   });
-  var min = 1;
-  var max = 6;
-  var random = Math.floor(Math.random() * (max - min)) + min;
+  const min = 1;
+  const max = 6;
+  let random = Math.floor(Math.random() * (max - min)) + min;
 
   // Устаналиваем класс в переменную в зависимости от случайного числа
   // Эти классы взяты из Bootstrap стилей
-  var alertClass;
+  let alertClass;
   switch (random) {
     case 1:
       alertClass = "secondary";
@@ -43,7 +43,6 @@ $(function () {
   }
 
   socket.on("add_mess", (data) => {
-    console.log(feedback.html);
     feedback.html("");
     message.val("");
     chatroom.append(
